@@ -12,3 +12,10 @@ clean:
 diff:
 	git difftool HEAD
 
+versions:
+	qemu-riscv64 --version
+	riscv64-linux-gnu-as --version
+	riscv64-linux-gnu-ld --version
+	lsb_release -a
+	# This is perhaps too detailed...
+	# lscpu
