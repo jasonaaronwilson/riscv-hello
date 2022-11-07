@@ -6,6 +6,11 @@
 # a7 - linux function number
 #
 
+## Including this causes a core dump. I know believe I understand why
+## my other program were not working.
+##
+## .section .code
+
 .global foo
 .global _start      # Provide program starting address to linker
 
