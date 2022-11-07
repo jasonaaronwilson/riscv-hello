@@ -6,10 +6,21 @@
 # a7 - linux function number
 #
 
-## Including this causes a core dump. I know believe I understand why
-## my other program were not working.
+## Including ".section .code" in the assembly file causes a core dump
+## (I'm still not sure if the core dump is in qemu, something it
+## calls, or if this is a "reflected" problem as it tries to execute
+## instructions).
+##
+## To see this for yourself, just uncomment the line below:
 ##
 ## .section .code
+##
+## I only used ".section .code" because this does not work:
+##
+## .code
+##
+## hello.s: Assembler messages:
+## hello.s:14: Error: unknown pseudo-op: `.code'
 
 .global foo
 .global _start      # Provide program starting address to linker
