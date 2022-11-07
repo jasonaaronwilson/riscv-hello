@@ -8,6 +8,15 @@
 
 .global _start      # Provide program starting address to linker
 
+# This is to test a theory of whether _start label or simply the first
+# instructions in the code section are used or not.
+#
+# This almost proves that the indeed the _start label is used and not
+# any code that may proceed it (otherwise we'd see an infinite loop
+# instead of the correct output.
+foo:    
+        j foo
+
 # Setup the parameters to print hello world
 # and then call Linux to do it.
 
