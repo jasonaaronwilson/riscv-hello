@@ -9,3 +9,6 @@ run:
 clean:
 	rm -f hello.o hello *~
 
+diff:
+	git difftool HEAD
+
