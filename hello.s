@@ -21,6 +21,19 @@
 ##
 ## hello.s: Assembler messages:
 ## hello.s:14: Error: unknown pseudo-op: `.code'
+## 
+## Which of course it probably because ".text" is the correct
+## "spelling" of "the read only code segment". I'm not sure where I
+## picked up .code to be honest.
+
+## This in fact appears to break things...
+##
+## .data
+## 
+## foobar:      .ascii "No worries.\n"
+##
+
+.text
 
 .global foo
 .global _start      # Provide program starting address to linker
