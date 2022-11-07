@@ -15,6 +15,8 @@
 ##
 ## .section .code
 ##
+## (And remove the .text below...)
+##
 ## I only used ".section .code" because this does not work:
 ##
 ## .code
@@ -22,14 +24,19 @@
 ## hello.s: Assembler messages:
 ## hello.s:14: Error: unknown pseudo-op: `.code'
 ## 
-## Which of course it probably because ".text" is the correct
+## Which of course is probably because ".text" is the correct
 ## "spelling" of "the read only code segment". I'm not sure where I
 ## picked up .code to be honest.
-
-## This in fact appears to (silently) break things. 
+##
+## Uncommenting this appears to (silently) break things. 
 ##
 ## .data
 ## foobar:      .ascii "Worries.\n"
+##
+## While only uncommenting this just magically works again:
+##
+## .data 1
+## foobar:      .ascii "No worries.\n"
 
 .text
 
@@ -39,9 +46,12 @@
 # This is to test a theory of whether _start label or simply the first
 # instructions in the code section are used or not.
 #
-# This almost proves that the indeed the _start label is used and not
-# any code that may proceed it (otherwise we'd see an infinite loop
-# instead of the correct output.
+# This basically proves that the indeed the _start label is used and
+# not any code that may proceed it (otherwise we'd see an infinite
+# loop instead of the correct output). Also note that we didn't add
+# any "linker" flags to try to force a particular "_start" label which
+# may be another option.
+
 foo:    
         j foo
 
@@ -64,4 +74,11 @@ _start: addi  a0, x0, 1      # 1 = StdOut
 .data
 helloworld:      .ascii "Hello World!\n"
 
-## This is from: https://smist08.wordpress.com/2019/09/07/risc-v-assembly-language-hello-world/
+## The basic program is from:
+##
+## https://smist08.wordpress.com/2019/09/07/risc-v-assembly-language-hello-world/
+##
+## The extra variations are me trying to figure out why some other
+## code was failing. I believe I'm starting to understand more why
+## people may not like "gas" (I always thought it was because the x86
+## syntax was "AT&T" rather than "Microsoft").
