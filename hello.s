@@ -6,8 +6,8 @@
 # a7 - linux function number
 #
 
-.global _start      # Provide program starting address to linker
 .global foo
+.global _start      # Provide program starting address to linker
 
 # This is to test a theory of whether _start label or simply the first
 # instructions in the code section are used or not.
