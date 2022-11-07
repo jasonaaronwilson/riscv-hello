@@ -26,12 +26,10 @@
 ## "spelling" of "the read only code segment". I'm not sure where I
 ## picked up .code to be honest.
 
-## This in fact appears to break things...
+## This in fact appears to (silently) break things. 
 ##
 ## .data
-## 
-## foobar:      .ascii "No worries.\n"
-##
+## foobar:      .ascii "Worries.\n"
 
 .text
 
